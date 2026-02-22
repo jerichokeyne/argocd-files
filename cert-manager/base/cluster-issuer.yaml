@@ -1,0 +1,46 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # The ACME server URL
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    # Email address used for ACME registration
+    email: jerichokeyne@gmail.com
+    # The ACME certificate profile
+    profile: tlsserver
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      # Will look in namespace `cert-manager`
+      name: letencrypt-staging
+    solvers:
+      # Enable the DNS-01 challenge provider for cloudflare
+      - dns01:
+          cloudflare:
+            email: jerichokeyne@gmail.com
+            apiKeySecretRef:
+              # Will look in namespace `cert-manager`
+              name: cloudflare-apikey-secret
+              key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: jerichokeyne@gmail.com
+    profile: tlsserver
+    privateKeySecretRef:
+      # Will look in namespace `cert-manager`
+      name: letencrypt-production
+    solvers:
+      - dns01:
+          cloudflare:
+            email: jerichokeyne@gmail.com
+            apiKeySecretRef:
+              # Will look in namespace `cert-manager`
+              name: cloudflare-apikey-secret
+              key: api-token

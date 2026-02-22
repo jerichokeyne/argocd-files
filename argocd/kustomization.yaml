@@ -1,0 +1,25 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=stable
+  - base/argo-cd-certificate.yaml
+  - base/argo-cd-ui-ingress.yaml
+  - base/sync-project.yaml
+
+patches:
+  # - path: overlays/argo-cd-cm.yaml
+  # - path: overlays/argocd-notifications-cm.yaml
+  # - path: overlays/argocd-notifications-controller-deploy.yaml
+  # - path: overlays/argocd-rbac-cm.yaml
+  # - path: overlays/argocd-server-service.yaml
+  - path: overlays/argocd-cmd-params-cm.yaml
+  - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
+  - path: overlays/patch-priority-class.yaml
+    target:
+      kind: Deployment
+  - path: overlays/patch-priority-class.yaml
+    target:
+      kind: StatefulSet

@@ -1,0 +1,11 @@
+cloudflare:
+  secretRef:
+    name: cloudflare-external-secret
+    accountIDKey: account_id
+    apiTokenKey: api_token
+    tunnelNameKey: tunnel_name
+
+replicaCount: 1
+
+cloudflared:
+  replicaCount: 1
