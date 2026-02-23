@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cloudflare-ingress
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/jerichokeyne/argocd-files
+    path: cloudflare-ingress
+    targetRevision: master
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: cloudflare-tunnel-ingress-controller
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 5
+      refresh: true
+    syncOptions:
+      - CreateNamespace=true

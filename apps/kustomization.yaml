@@ -6,3 +6,5 @@ resources:
   - base/sync.yaml
   - base/reloader.yaml
   - base/cert-manager.yaml
+  - base/external-secrets.yaml
+  - base/cloudflare-ingress.yaml

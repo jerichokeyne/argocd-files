@@ -4,3 +4,10 @@ kind: Kustomization
 resources:
   - base/secretstore.yaml
   - base/password-generator.yaml
+
+helmCharts:
+  - name: external-secrets
+    repo: https://charts.external-secrets.io
+    # version: 7.3.4
+    releaseName: "external-secrets"
+    namespace: external-secrets
