@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sync-apps
+  namespace: argocd
+spec:
+  project: sync
+  source:
+    repoURL: https://github.com/jerichokeyne/argocd-files
+    path: apps
+    targetRevision: master
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  ignoreDifferences:
+    # Allow to disable sync in the UI for managed applications
+    - group: argoproj.io
+      kind: Application
+      managedFieldsManagers:
+        - argocd-server
+      jsonPointers:
+        - /spec/syncPolicy/automated
+  syncPolicy:
+    syncOptions:
+      - RespectIgnoreDifferences=true
+    automated:
+      prune: true
+      selfHeal: true
