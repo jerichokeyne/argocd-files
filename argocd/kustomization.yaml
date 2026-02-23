@@ -23,3 +23,6 @@ patches:
   - path: overlays/patch-priority-class.yaml
     target:
       kind: StatefulSet
+  - path: overlays/argocd-reload.yaml
+    target:
+      kind: Deployment
