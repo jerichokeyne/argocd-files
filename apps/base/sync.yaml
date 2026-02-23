@@ -25,4 +25,7 @@ spec:
       - RespectIgnoreDifferences=true
     automated:
       prune: true
+      limit: 5
       selfHeal: true
+    retry:
+      refresh: true
