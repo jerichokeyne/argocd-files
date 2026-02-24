@@ -76,7 +76,16 @@ kubectl apply -k argoproj -n argocd
 ## ArgoCD (https://argo-cd.readthedocs.io/en/stable/)
 - Used to automatically deploy apps to my kubernetes cluster
 
+## Tailscale Kubernetes Operator (https://tailscale.com/docs/features/kubernetes-operator)
+- Used to expose services on my cluster over my tailnet
+
+## Reloader (https://github.com/stakater/Reloader)
+- Used to automatically re-make pods in deployments/statefulsets when the configmaps and secrets they use get updated
+
+## Longhorn (https://longhorn.io/)
+- Used for cluster storage
+- Configured to automatically backup to backblaze b2
+
 # Acknowledgements
 - The repo structure is heavily inspiried by [the argoproj-deployments repo](https://github.com/argoproj/argoproj-deployments) which is what deploys and configures the [ArgoCD live example](https://cd.apps.argoproj.io/) that is mentioned in the docs: https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#manage-argo-cd-using-argo-cd
   - The initial setup instructions are heavily inspiried by [the directions in that repo](https://github.com/argoproj/argoproj-deployments/blob/master/infrastructure/terraform/gcp/README.md#argo-cd-deployment)
-
