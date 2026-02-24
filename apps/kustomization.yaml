@@ -9,3 +9,4 @@ resources:
   - base/external-secrets.yaml
   - base/cloudflare-ingress.yaml
   - base/tailscale.yaml
+  - base/longhorn.yaml
