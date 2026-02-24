@@ -5,7 +5,7 @@ namespace: argocd
 
 resources:
   # renovate: datasource=github-releases depName=argoproj/argo-cd
-  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v3.3.2
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v3.3.2/manifests/install.yaml
   - base/argo-cd-certificate.yaml
   - base/argo-cd-ui-ingress.yaml
   - base/sync-project.yaml

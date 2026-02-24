@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: argocd-cmd-params-cm
 data:
-  server.insecure: 'true' # Run without TLS (so that cloudflare can manage it)
+  server.insecure: "true" # Run without TLS (so that cloudflare can manage it)
+  reposerver.git.request.timeout: "120" # Increase git fetch timeout from default 27s
