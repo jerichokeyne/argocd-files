@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: longhorn-default-setting
+  namespace: longhorn-system
+data:
+  default-setting.yaml: |-
+    backup-target: s3://jkeyne-longhorn-backups@s3.us-west-004.backblazeb2.com/ # Endpoint used to access the default backupstore
+    backup-target-credential-secret: backblaze-secret # Name of the Kubernetes secret associated with the default backup target
+    backupstore-poll-interval: "300" # Number of seconds that Longhorn waits before checking the default backupstore for new backups
+
+    default-replica-count: "1" # Currently there's only one node
+    replica-auto-balance: "best-effort"  # When you add nodes, Longhorn will automatically rebalance replicas across them
+    replica-replenishment-wait-interval: "900" # Default is 600 seconds. You might want to increase this on small clusters
+
+    storage-over-provisioning-percentage: "100" # Default is 200%
+    storage-minimal-available-percentage: "10" # Default is 25%
+
+    guaranteed-instance-manager-cpu: "5" # Default is 12%. Lower this on resource-constrained nodes
+    concurrent-replica-rebuild-per-node-limit: "1" # Default is 5. Lower this to reduce load during rebuilds
+
+    auto-salvage: "true" # Useful for small clusters to automatically recover volumes
+    auto-cleanup-system-generated-snapshot: "true" # Keeps your storage cleaner
+    orphan-resource-auto-deletion: "true" # Auto-cleanup of orphaned resources
+
+    default-data-path: /var/lib/longhorn/  # Default, but good to be explicit
+
+    # Once there's more nodes in the cluster, these might be good settings:
+    # default-replica-count: "2"  # or "3" if you have 3+ nodes
+    # guaranteed-instance-manager-cpu: "8"  # or "12" with more resources
+    # concurrent-replica-rebuild-per-node-limit: "3"
+    # storage-minimal-available-percentage: "15"
