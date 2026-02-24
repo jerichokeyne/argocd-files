@@ -8,3 +8,4 @@ resources:
   - base/cert-manager.yaml
   - base/external-secrets.yaml
   - base/cloudflare-ingress.yaml
+  - base/tailscale.yaml
