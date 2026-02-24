@@ -4,7 +4,8 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=stable
+  # renovate: datasource=github-releases depName=argoproj/argo-cd
+  - github.com/argoproj/argo-cd//manifests/cluster-install?ref=v3.3.2
   - base/argo-cd-certificate.yaml
   - base/argo-cd-ui-ingress.yaml
   - base/sync-project.yaml
@@ -16,7 +17,8 @@ patches:
   # - path: overlays/argocd-rbac-cm.yaml
   # - path: overlays/argocd-server-service.yaml
   - path: overlays/argocd-cmd-params-cm.yaml
-  - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
+  # renovate: datasource=github-releases depName=argoproj/argo-cd
+  - path: https://raw.githubusercontent.com/argoproj/argo-cd/v3.3.2/notifications_catalog/install.yaml
   - path: overlays/patch-priority-class.yaml
     target:
       kind: Deployment

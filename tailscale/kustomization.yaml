@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - base/external-secret.yaml
+  # renovate: datasource=github-releases depName=tailscale/tailscale
   - https://raw.githubusercontent.com/tailscale/tailscale/refs/tags/v1.94.2/cmd/k8s-operator/deploy/manifests/operator.yaml
 
 patches:

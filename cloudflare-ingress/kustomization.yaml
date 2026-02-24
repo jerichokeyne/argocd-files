@@ -5,9 +5,10 @@ resources:
   - base/external-secret.yaml
 
 helmCharts:
+  # renovate: registryUrl=https://helm.strrl.dev
   - name: cloudflare-tunnel-ingress-controller
     repo: https://helm.strrl.dev
-    # version: 7.3.4
+    version: 0.0.22
     releaseName: "cloudflare-tunnel-ingress-controller"
     namespace: cloudflare-tunnel-ingress-controller
     valuesFile: values.yaml
