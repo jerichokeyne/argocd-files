@@ -17,12 +17,12 @@ patches:
   # - path: overlays/argocd-server-service.yaml
   - path: overlays/argocd-cmd-params-cm.yaml
   - path: https://raw.githubusercontent.com/argoproj/argo-cd/master/notifications_catalog/install.yaml
-  - path: ../common_overlays/patch-priority-class.yaml
+  - path: overlays/patch-priority-class.yaml
     target:
       kind: Deployment
-  - path: ../common_overlays/patch-priority-class.yaml
+  - path: overlays/patch-priority-class.yaml
     target:
       kind: StatefulSet
-  - path: ../common_overlays/reload.yaml
+  - path: overlays/reload.yaml
     target:
       kind: Deployment

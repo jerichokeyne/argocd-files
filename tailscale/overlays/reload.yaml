@@ -1,0 +1,6 @@
+apiVersion: apps/v1
+kind: any
+metadata:
+  annotations:
+    reloader.stakater.com/auto: "true"
+  name: any
