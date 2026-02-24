@@ -15,12 +15,18 @@ spec:
   ignoreDifferences:
     - group: apps
       kind: Deployment
-      jsonPoints:
+      jsonPointers:
         - /spec/replicas
     - group: apps
       kind: StatefulSet
-      jsonPoints:
+      jsonPointers:
         - /spec/replicas
+    - group: external-secrets.io # Needed due to "ServerSideApply=true"
+      kind: ExternalSecret
+      jsonPointers:
+        - /spec/data/*/conversionStrategy
+        - /spec/data/*/decodingStrategy
+        - /spec/data/*/metadataPolicy
   syncPolicy:
     automated:
       prune: true
