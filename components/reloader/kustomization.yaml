@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1alpha1 # Note: v1alpha1 for components
+kind: Component
+
+patches:
+  - patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        name: any
+    target:
+      kind: Deployment
+  - patch: |-
+      apiVersion: apps/v1
+      kind: StatefulSet
+      metadata:
+        annotations:
+          reloader.stakater.com/auto: "true"
+        name: any
+    target:
+      kind: StatefulSet

@@ -19,12 +19,7 @@ patches:
   - path: overlays/argocd-cmd-params-cm.yaml
   # renovate: datasource=github-releases depName=argoproj/argo-cd
   - path: https://raw.githubusercontent.com/argoproj/argo-cd/v3.3.2/notifications_catalog/install.yaml
-  - path: overlays/patch-priority-class.yaml
-    target:
-      kind: Deployment
-  - path: overlays/patch-priority-class.yaml
-    target:
-      kind: StatefulSet
-  - path: overlays/reload.yaml
-    target:
-      kind: Deployment
+
+components:
+  - ../components/reloader
+  - ../components/priority-class-critical

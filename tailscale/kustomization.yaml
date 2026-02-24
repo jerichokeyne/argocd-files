@@ -8,8 +8,9 @@ resources:
 
 patches:
   - path: overlays/delete-secret.yaml
-  - path: overlays/reload.yaml
-    target:
-      kind: Deployment
+
+components:
+  - ../components/reloader
+  - ../components/priority-class-critical
 
 namespace: tailscale
