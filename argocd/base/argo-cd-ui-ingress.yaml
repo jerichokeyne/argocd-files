@@ -6,9 +6,12 @@ metadata:
     ingress.kubernetes.io/proxy-body-size: 100M
     ingress.kubernetes.io/app-root: "/"
 spec:
-  ingressClassName: cloudflare-tunnel
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - argo
   rules:
-    - host: argo.0001118.xyz
+    - host: argo
       http:
         paths:
           - path: /
