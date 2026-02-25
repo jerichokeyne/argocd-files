@@ -36,3 +36,4 @@ spec:
       refresh: true
     syncOptions:
       - ServerSideApply=true
+      - RespectIgnoreDifferences=true
