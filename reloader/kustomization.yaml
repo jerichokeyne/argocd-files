@@ -3,6 +3,6 @@ kind: Kustomization
 
 resources:
   # renovate: datasource=github-releases depName=stakater/Reloader
-  - https://raw.githubusercontent.com/stakater/Reloader/chart-v2.2.8/deployments/kubernetes/manifests/reloader.yaml
+  - https://raw.githubusercontent.com/stakater/Reloader/chart-v2.2.8/deployments/kubernetes/reloader.yaml
 
 namespace: reloader
