@@ -5,3 +5,4 @@ metadata:
 data:
   server.insecure: "true" # Run without TLS (so that cloudflare can manage it)
   reposerver.git.request.timeout: "120" # Increase git fetch timeout from default 27s
+  timeout.reconciliation: "300" # Increase manifest generation timeout to 5 minutes
