@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/compare-options: ServerSideDiff=true
 spec:
   project: default
   source:
@@ -24,6 +26,8 @@ spec:
     - group: external-secrets.io # Needed due to "ServerSideApply=true"
       kind: ExternalSecret
       jsonPointers:
+        - /metadata/managedFields
+        - /status
         - /spec/data/*/conversionStrategy
         - /spec/data/*/decodingStrategy
         - /spec/data/*/metadataPolicy
